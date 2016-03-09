@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Boxes</title>
+  <link rel="stylesheet" href="styles/reset.css" type="text/css">
+  <link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+<body>
+  <div class="frame">
+    <div class="red"></div>
+    <div class="yellow"></div>
+    <div class="green"></div>
+    <div class="blue"></div>
+    <div class="orange" id="select"></div>
+  </div>
+
+  <script src="scripts/jquery-1.12.0.min.js"></script>
+  <script>
+    var main = function(){
+      $("div").mouseenter(function(e){
+        e.stopPropagation();
+        $(this).animate({
+          height: "+=10px"
+        });
+      });
+
+      $("div").mouseleave(function(e){
+        e.stopPropagation();
+        $(this).animate({
+          height: "-=10px"
+        });
+      });
+
+      $("#select").click(function(){
+        // e.stopPropagation();
+        // $(this).toggle(1000);
+        $(this).addClass('blue');
+        prompt("sdfsdf");
+      });
+    };
+
+    $('document').ready(main);
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slide Down or Up</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <style type="text/css">
+    body {
+      margin: 0 auto;
+      width: 200px;
+      text-align: center;
+    }
+
+    .panel {
+      display: none;
+      background-color: #ffffbd;
+      padding: 8px;
+      height: 300px;
+      font-family: garamond, times-new-roman, sans-serif;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .slide {
+      border-top: 2px solid #cc0000;
+    }
+
+    .pull-me {
+      width: 150px;
+      background-color: #cc0000;
+      margin: 0 auto;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      font-size: 14px;
+      padding: 4px;
+    }
+
+    .pull-me:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod deleniti nesciunt aliquam maxime nisi excepturi cumque ad, ipsum natus nostrum officiis voluptates vero expedita eaque, illum labore architecto dolorem sed!</p>
+  </div>
+  <div class="slide">
+    <div class="pull-me">Slide Up/Down</div>
+  </div>
+  <script src="scripts/jquery-1.12.0.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.pull-me').click(function(){
+        $('.panel').slideToggle('slow');
+      });
+
+
+    });
+  </script>
+</body>
+</html>

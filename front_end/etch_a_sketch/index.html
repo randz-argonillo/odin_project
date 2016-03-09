@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Etch a Sketch</title>
+  <link rel="stylesheet" href="styles/reset.css" type="text/css">
+  <link rel="stylesheet" href="styles/sketch.css" type="text/css">
+  <link rel="stylesheet" href="styles/jquery-ui.min.css" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <ul>
+        <li class="ctrl">
+          <label for="pointer-size">Pointer Size:</label>
+          <select id="pointer-size">
+          </select>
+        </li>
+        <li class="ctrl">Choose color: <input type="color" id="color-picker" value="#CCCCCC"></li>
+        <li class="ctrl">       
+          Eraser: <div class="ctrl toggle-button"><button></button></div>
+        </li>
+      </ul>  
+    </div>
+    <div id="progressbar">
+    </div>
+    
+    <div class="canvas">
+      
+    </div>
+  </div>
+
+  <script src="scripts/jquery-2.0.3.js" type="text/javascript"></script>
+  <script src="scripts/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="scripts/sketch.js" type="text/javascript"></script>
+</body>
+</html>

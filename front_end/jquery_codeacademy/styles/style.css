@@ -1,0 +1,38 @@
+
+
+div {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.frame {
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  border: 1px solid black;
+  display: block;
+}
+
+.red {
+  background-color: red;
+}
+
+
+.yellow {
+  background-color: yellow;
+}
+
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.orange {
+  background-color: orange;
+}

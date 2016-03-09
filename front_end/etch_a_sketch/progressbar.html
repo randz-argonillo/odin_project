@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>jQuery UI ProgressBar functionality</title>
+      <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <style>
+
+         .ui-widget {
+            border:1px solid black;
+            
+         }
+
+        .ui-widget-header {
+            background: #cedc98;
+            border: 1px solid #DDDDDD;
+            color: #333333;
+            font-weight: bold;
+         }
+         .progress-label {
+            position: absolute;
+            left: 50%;
+            top: 13px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #fff;
+         }
+      </style>
+   </head>
+   <body> 
+      <div id="progressbar-1">
+         <div class="progress-label">Loading..</div>
+      </div> 
+
+      <script type="text/javascript">
+         var main = function(){
+            initializeProgressbar();
+
+            setTimeout(function(){
+               runProgressbar(1);
+            }, 1000);
+         };
+
+         var initializeProgressbar = function(){
+            var $bar = $('#progressbar-1');
+            var $lbl = $('.progress-label');
+
+            $bar.progressbar({
+               value: false,
+               change: function(){
+                  $lbl.text($(this).progressbar('value') + '%');
+               },
+               complete: function(){
+                  $lbl.text('Loading Completed!');
+               }
+            });
+         };
+
+         var runProgressbar = function(interval){
+            var bar = $('#progressbar-1');
+            var val = bar.progressbar('value') + interval;
+            bar.progressbar('value', val);
+
+            if(val < 100){
+               setTimeout(function(){ 
+                  runProgressbar(5); 
+               }, 50);
+            }
+
+         };
+
+         $(document).ready(main);
+         
+       
+      </script>
+   </body>
+</html>
