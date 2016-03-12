@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(article_id: @article.id)
   end
 
   def edit
