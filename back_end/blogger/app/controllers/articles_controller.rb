@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
@@ -28,6 +30,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    
     if @article.save
       redirect_to article_path(@article), notice: "Article '#{@article.title}' successfuly created."
     else
@@ -44,6 +47,8 @@ class ArticlesController < ApplicationController
   def current_article
     @article = Article.find(params[:id])
   end
+
+  
 
  
 

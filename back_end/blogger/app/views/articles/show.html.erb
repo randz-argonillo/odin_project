@@ -1,6 +1,15 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 
+<% if @article.tags.size > 0 %>
+<div>
+  Tags:
+  <% @article.tags.map do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</div>
+<% end %>
+
 <br>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>
