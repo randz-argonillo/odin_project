@@ -4,9 +4,15 @@ require 'pry'
 RSpec.describe "StaticPages", type: :request do
   describe "Home" do
     it "should have the content 'Sample App'" do
-      binding.pry
-      visit 'static_pages/home'
-      expect(page).to have_selector('title', text: 'SampleApp')
+      visit '/'
+      expect(page).to have_title('SampleApp')
+    end
+  end
+
+  describe 'Contact' do 
+    it "shows the contact page" do 
+      visit '/contact'
+      expect(page).to have_title('Contact')
     end
   end
 end
