@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User' do 
-  let(:user) { User.new(name: 'randy', email: 'randy@mail.com') }
+  let(:user) { User.new(name: 'randy', email: 'randy@mail.com', password: '123456', password_confirmation: '123456') }
 
   it "responds to name function" do 
     expect(user.respond_to? :name).to be_truthy 
@@ -80,6 +80,34 @@ RSpec.describe 'User' do
         expect(user).to be_valid
       end
 
+    end
+  end
+
+  describe "password and password_confirmation tests" do 
+    it "will fail when blank" do 
+      user.password = ''
+      user.password_confirmation = ''
+
+      expect(user).not_to be_valid
+    end
+
+    it "will fail when length is less than 6" do 
+      user.password = '1' * 5
+      user.password_confirmation = user.password
+
+      expect(user).not_to be_valid
+    end
+
+    it "should be both equal" do 
+      user.password = 'a' * 6
+      user.password_confirmation = 'd' * 6
+
+      expect(user).to be_valid
+
+      # user.password = 'a' * 6
+      # user.password_confirmation = 'a' * 6
+
+      # expect(user).to be_valid
     end
   end
 
