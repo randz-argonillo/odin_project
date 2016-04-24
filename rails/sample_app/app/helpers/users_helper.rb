@@ -6,4 +6,7 @@ module UsersHelper
     image_tag url, alt: "user photo", class: "gravatar"
   end
 
+  def submit_caption(user, new_caption, edit_caption)
+    if user.new_record? then new_caption else edit_caption end
+  end
 end
