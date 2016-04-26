@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :require_login, only: [:edit, :update, :index]
+  before_action :require_correct_user, only: [:edit, :update]
+  before_action :require_admin, only: [:destroy]
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
 
   def new
     @user = User.new
@@ -39,6 +44,12 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    user.destroy
+    flash[:success] = 'User deleted'
+    redirect_to users_path
+  end
   
 
 private
@@ -48,13 +59,13 @@ private
 
   def require_login
     return if logged_in?
-    
+
     store_request
     flash[:danger] = 'Please log in.'
     redirect_to login_url
   end
 
-  def correct_user
+  def require_correct_user
     return if current_user?(user)
     flash[:danger] = "You are not authorize to access the page."
     redirect_to user_path(user)
@@ -62,5 +73,11 @@ private
 
   def user
     @user ||= User.find(params[:id])
+  end
+
+  def require_admin
+    return if current_user.admin?
+    flash[:danger] = 'You are not authorize.'
+    redirect_to root_url 
   end
 end
