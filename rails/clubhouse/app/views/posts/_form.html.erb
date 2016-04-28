@@ -1,0 +1,7 @@
+<%= form_for [@user, @post] do |f| %>
+  <%= render partial: 'shared/errors', object: @post.errors %>
+
+  <%= f.label :message, 'Post:' %> <br>
+  <%= f.text_area :message, size: "30x10"  %> <br>
+  <%= f.submit %>
+<% end %>
