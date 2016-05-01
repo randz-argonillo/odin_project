@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  attr_reader :remember_token
+  attr_accessor :remember_token, :activation_token
 
   has_secure_password
   before_save :set_email_to_lowercase
+  before_create :generate_activation_token
 
   validates :name, presence: true, length: {maximum: 50}
   validates :email, 
@@ -38,5 +39,11 @@ private
   def set_email_to_lowercase
     self.email = self.email.downcase
   end
+
+  def generate_activation_token
+    @activation_token = User.new_token
+    self.activation_digest = User.digest(@activation_token)
+  end
+
 
 end
