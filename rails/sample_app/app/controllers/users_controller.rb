@@ -33,7 +33,9 @@ class UsersController < ApplicationController
     #   @user = User.find(params[:id])
     # end
 
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])    
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 5)
+
   end
 
   def edit
@@ -61,13 +63,6 @@ private
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def require_login
-    return if logged_in?
-
-    store_request
-    flash[:danger] = 'Please log in.'
-    redirect_to login_url
-  end
 
   def require_correct_user
     return if current_user?(user)

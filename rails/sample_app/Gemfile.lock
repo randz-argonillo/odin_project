@@ -57,6 +57,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -89,6 +95,8 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99.1)
+    mimemagic (0.3.1)
+    mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -198,10 +206,12 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 0.0.10)
   byebug
   capybara
+  carrierwave (~> 0.11.2)
   coffee-rails (~> 4.1.0)
   faker (~> 1.6, >= 1.6.3)
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick (~> 4.5, >= 4.5.1)
   pry-byebug
   pry-rails
   rails (= 4.2.5)

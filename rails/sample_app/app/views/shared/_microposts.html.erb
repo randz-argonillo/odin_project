@@ -1,0 +1,9 @@
+<% if !microposts.nil? && microposts.any? %>
+  <div class="col-md-8">
+    <h3>Microposts (<%= microposts.count %>) </h3>
+    <ol class="microposts">
+      <%= render partial: '/shared/micropost', collection: microposts %>
+    </ol>
+    <%= will_paginate microposts %>
+  </div>
+<% end %>

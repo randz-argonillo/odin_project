@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token
 
+  has_many :microposts, dependent: :destroy
   has_secure_password
   before_save :set_email_to_lowercase
   before_create :generate_activation_token
@@ -33,6 +34,10 @@ class User < ActiveRecord::Base
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest) == remember_token
+  end
+
+  def feed
+    Micropost.where('user_id = ?', id)
   end
 
 private

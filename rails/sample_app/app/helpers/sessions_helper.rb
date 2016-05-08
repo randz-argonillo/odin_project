@@ -25,6 +25,14 @@ module SessionsHelper
     !current_user.nil?    
   end
 
+  def require_login
+    return if logged_in?
+
+    store_request
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
+  end
+
   def log_out
     forget(current_user)
     session.delete(:user_id)
